@@ -4,11 +4,29 @@ import android.os.Handler;
 import android.os.HandlerThread;
 
 /**
- * 再按一次退出 辅助类
- * @author Jimmy Chiang
- *
- * <p>下面是一段典型的使用代码：</p>
+ * 再按一次退出
  * 
+ * @author Jimmy Chiang
+ *         <p>
+ *         下面是一段典型的使用代码
+ * 
+ *         <pre>
+ * public boolean onKeyDown(int keyCode, KeyEvent event) {
+ * 
+ * 	if (keyCode == KeyEvent.KEYCODE_BACK) {
+ * 		if (exitHelper.isExit()) {
+ * 			finish();
+ * 			return true;
+ * 		} else {
+ * 			Toast.makeText(getApplicationContext(), "再按一次退出程序",
+ * 					Toast.LENGTH_SHORT).show();
+ * 			exitHelper.doExitInOneSecond();
+ * 			return true;
+ * 		}
+ * 	}
+ * 	return super.onKeyDown(keyCode, event);
+ * }
+ * </pre>
  */
 public class ExitOneMoreTouch {
 	private boolean isExit = false;
